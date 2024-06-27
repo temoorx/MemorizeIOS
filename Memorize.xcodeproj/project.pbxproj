@@ -55,8 +55,8 @@
 		0466E42D2C2AC71C00E76FA9 /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
-				0466E4302C2AC71C00E76FA9 /* EmojiMemoryGameView.swift */,
 				0466E42E2C2AC71C00E76FA9 /* MemorizeApp.swift */,
+				0466E4302C2AC71C00E76FA9 /* EmojiMemoryGameView.swift */,
 				0466E43E2C2C282600E76FA9 /* EmojisMemoryGame.swift */,
 				0466E43C2C2C254200E76FA9 /* MemorizeGame.swift */,
 				0466E4322C2AC71E00E76FA9 /* Assets.xcassets */,
