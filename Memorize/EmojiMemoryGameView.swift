@@ -20,13 +20,23 @@ struct EmojiMemoryGameView: View {
                 .font(.largeTitle)
             
             cards
-                .animation(.default, value: viewModel.cards)
+                .foregroundColor(viewModel.color)
                 .padding()
-            Button("Shuffle"){
-                viewModel.shuffle()
+            HStack {
+                Text("Score: \(viewModel.score)").animation(nil)
+                Spacer()
+                Button("Shuffle"){
+                    withAnimation{
+                        viewModel.shuffle()
+                    }
+                    
+                }
             }
+            .font(.largeTitle)
+            .padding()
             
         }
+      
     }
     
     private var cards : some View {
@@ -35,38 +45,18 @@ struct EmojiMemoryGameView: View {
                 .aspectRatio(aspectRatio ,contentMode: .fit)
                 .padding(4)
                 .onTapGesture {
-                    viewModel.choose(card)
+                    withAnimation(){
+                        viewModel.choose(card)
+                    }
+                    
                 }
-            
-        }.foregroundColor(.orange)
-    }
-    
-    
-    
-    struct CardView: View {
-        let card: MemorizeGame<String>.Card
-        init( _ card: MemorizeGame<String>.Card) {
-            self.card = card
-        }
-        var body: some View {
-            ZStack{
-                let base = RoundedRectangle(cornerRadius: 12)
-                Group{
-                    base.foregroundColor(.white)
-                    base.strokeBorder(lineWidth: 2)
-                    Text(card.content)
-                        .font(.system(size: 200))
-                        .minimumScaleFactor(0.1)
-                        .aspectRatio(1, contentMode: .fit)
-                }
-                .opacity(card.isFaceUp ? 1 : 0)
-                base.fill()
-                    .opacity(card.isFaceUp ? 0 : 1)
-            }
-            .opacity(card.isFaceUp || !card.isMatched ? 1: 0)
             
         }
     }
+    
+    
+    
+
 }
 
 #Preview {

@@ -23,7 +23,14 @@ class EmojisMemoryGame: ObservableObject{
     }
     
     @Published private var model = createMemoryGame()
-   
+    
+    var score : Int{
+        model.score
+    }
+    
+    var color: Color{
+        .orange
+    }
     
     var cards: Array<MemorizeGame<String>.Card>{
         return model.cards
